@@ -1,8 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use app\Http\Controllers\HomeController;
-
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\AlumnoController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -18,4 +18,6 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('inicio', [HomeController::class, 'home']);
+//Route::get('inicio', [HomeController::class, 'home']);
+//Route::get('inicio', 'AlumnoController@index');
+Route::resource('alumnos', AlumnoController::class);
