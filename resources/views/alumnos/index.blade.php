@@ -1,4 +1,4 @@
-<link rel="stylesheet" type="text/css" href="{{ asset('css/estilos.css') }}">
+@include('app')
 <div class="container">
     <h1>Lista de Alumnos</h1>
     <a class="pull-right" href="{{route('alumnos.create')}}">
@@ -35,9 +35,15 @@
                         <td>{{ $a->genero }}</td>
                         <td>{{ $a->fecha_de_nacimiento }}</td>
                         <td>
-                            <form action="{{url('/alumnos/'.$a->id)}}" method="DELETE">
+                            <a href="{{url('/alumnos/'.$a->id.'/edit')}}">
+                                <input type="submit" class="btn btn-warning" value="Editar">
+                            </a>
+                        </td>
+                        <td>
+                            <form action="{{url('/alumnos/'.$a->id)}}" method="POST">
                                 @csrf
-                                {{method_field('DELETE')}} <input type="button" class="btn btn-danger" onclick="return confirm('Estas seguro')" value="Borrar">
+                                {{method_field('DELETE')}}
+                                <input type="submit" class="btn btn-danger" onclick="return confirm('Estas seguro')" value="Borrar">
                             </form>
                         </td>
                     </tr>

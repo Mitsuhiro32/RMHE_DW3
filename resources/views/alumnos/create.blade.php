@@ -1,4 +1,4 @@
-<link rel="stylesheet"  type="text/css" href="{{asset('css/estilos.css')}}">
+@include('app')
 <div class="container">
     <h1>Crear Alumno</h1>
     <form action="{{url('/alumnos')}}" method="POST" enctype="multipart/form-data">
@@ -28,9 +28,10 @@
         <input type="text" class="form-control" name="profesion" id="profesion">
 
         <label for="genero">Genero</label>
-        <select class="form-select" aria-label="Default select example" id="genero">
-            <option label="f">Femenino</option>
-            <option label="m">Masculino</option>
+        <select class="form-select" aria-label="Default select example" name="genero" id="genero">
+            <option selected>Selecione</option>
+            <option value="femenino">Femenino</option>
+            <option value="masculino">Masculino</option>
         </select>
         <br>
 

@@ -24,7 +24,7 @@ return new class extends Migration
             $table->string('gmail');
             $table->string('profesion');
             $table->string('genero');
-            $table->date('fecha_de_nacimiento');
+            $table->text('fecha_de_nacimiento');
             $table->timestamps();
         });
     }
