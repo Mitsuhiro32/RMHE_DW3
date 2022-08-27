@@ -1,11 +1,12 @@
 @include('app')
 <div class="container">
     <h1>Lista de Alumnos</h1>
-    <a class="pull-right" href="{{route('alumnos.create')}}">
+    <a class="d-flex justify-content-end" href="{{route('alumnos.create')}}">
         <button type="button" class="btn btn-primary">Nuevo</button>
     </a>
+    <br>
     <div class="table-responsive-sm">
-        <table class="table table-border" id="tabla">
+        <table class="table table-group-divider table-striped" id="tabla">
             <thead>
                 <tr>
                     <th>Nombre</th>
@@ -18,6 +19,8 @@
                     <th>Pofesión</th>
                     <th>Genero</th>
                     <th>Fecha de Nacimiento</th>
+                    <th></th>
+                    <th></th>
                 </tr>
             </thead>
 
