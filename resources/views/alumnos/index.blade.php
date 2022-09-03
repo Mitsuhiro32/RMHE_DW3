@@ -1,10 +1,25 @@
 @include('app')
 <div class="container">
+    @include('flash::message')
     <h1>Lista de Alumnos</h1>
-    <a class="d-flex justify-content-end" href="{{route('alumnos.create')}}">
-        <button type="button" class="btn btn-primary">Nuevo</button>
-    </a>
-    <br>
+    <div class="d-flex justify-content-between">
+        <div class="col-auto">
+            <a class="d-flex justify-content-end" href="{{route('alumnos.create')}}">
+            <button type="button" class="btn btn-primary">Nuevo</button>
+        </a>
+        </div>
+        <div class="card-body">
+            <form class="row g-2 float-end">
+                <div class="col-auto">
+                    <input type="search" name="buscarpor" class="form-control" placeholder="Buscar por nombre" aria-label="search">
+                </div>
+                <div class="col-auto">
+                    <button class="btn btn-success mb-2" type="submit">Buscar</button>
+                </div>
+            </form>
+        </div>
+        <br>
+    </div>
     <div class="table-responsive-sm">
         <table class="table table-group-divider table-striped" id="tabla">
             <thead>
@@ -19,8 +34,7 @@
                     <th>Pofesión</th>
                     <th>Genero</th>
                     <th>Fecha de Nacimiento</th>
-                    <th></th>
-                    <th></th>
+                    <th>Opciones</th>
                 </tr>
             </thead>
 
@@ -38,16 +52,28 @@
                         <td>{{ $a->genero }}</td>
                         <td>{{ $a->fecha_de_nacimiento }}</td>
                         <td>
-                            <a href="{{url('/alumnos/'.$a->id.'/edit')}}">
-                                <input type="submit" class="btn btn-warning" value="Editar">
-                            </a>
-                        </td>
-                        <td>
-                            <form action="{{url('/alumnos/'.$a->id)}}" method="POST">
-                                @csrf
-                                {{method_field('DELETE')}}
-                                <input type="submit" class="btn btn-danger" onclick="return confirm('Estas seguro')" value="Borrar">
-                            </form>
+                            <div class="btn-group">
+                                <div class="me-2">
+                                    <a href="{{url('/alumnos/'.$a->id.'/edit')}}">
+                                        <input type="submit" class="btn btn-warning" value="Editar">
+                                    </a>
+                                </div>
+
+                                <div class="me-2">
+                                <form action="{{url('/alumnos/'.$a->id)}}" method="POST">
+                                    @csrf
+                                    {{method_field('DELETE')}}
+                                    <input type="submit" class="btn btn-danger" onclick="return confirm('Estas seguro')" value="Borrar">
+                                </form>
+                                </div>
+
+                                <div class="me-2">
+                                <a href="{{route('alumnos.show', $a->id)}}">
+                                    <input type="submit" class="btn btn-info" value="Ver">
+                                </a>
+                                </div>
+
+                            </div>
                         </td>
                     </tr>
                 @endforeach

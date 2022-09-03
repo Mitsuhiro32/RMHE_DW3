@@ -1,7 +1,20 @@
 @include('app')
+
 <div class="container">
+    @if (count($errors)>0)
+    <div class="alert alert-danger" role="aler">
+        <u>
+            @foreach ($errors->all() as $error)
+                <li>
+                    {{ $error }}
+                </li>
+            @endforeach
+        </u>
+    </div>
+    @endif
+
     <h1>Crear Alumno</h1>
-    <form action="{{url('/alumnos')}}" method="POST" enctype="multipart/form-data">
+    <form action="{{ url('/alumnos') }}" method="POST" enctype="multipart/form-data">
         @csrf
         <label for="nombre">Nombre</label>
         <input type="text" class="form-control" name="nombre" id="nombre">
@@ -42,7 +55,7 @@
         <div class="d-flex justify-content-between">
             <input type="submit" class="btn btn-primary" value="Guardar">
 
-            <a href="{{route('alumnos.index')}}">
+            <a href="{{ route('alumnos.index') }}">
                 <button type="button" class="btn btn-danger">Cancelar</button>
             </a>
         </div>

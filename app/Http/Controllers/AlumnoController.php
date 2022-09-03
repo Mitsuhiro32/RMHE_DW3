@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\DB;
 use App\Models\Alumno;
 use Illuminate\Http\Request;
+use Flash;
 
 use function PHPUnit\Framework\returnSelf;
 
@@ -15,8 +16,10 @@ class AlumnoController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
+        $nombre = $request->get('buscarpor');
+        $alumnos = Alumno::where('nombre','like',"%nombre%");
         $alumnos = Alumno::paginate(3);
         //$alumnos = DB::table('alumnos')->get();
         //$alumnos = Alumno::all();
@@ -42,9 +45,32 @@ class AlumnoController extends Controller
      */
     public function store(Request $request)
     {
+        $rules=[
+            'nombre' => 'required |string',
+            'apellido' => 'required |alpha',
+            'edad' => 'required |max:3',
+            'ci' => 'required |numeric',
+            'telefono' => 'required |max:13',
+            'direccion' => 'required',
+            'gmail' => 'required |email|unique:alumnos.gmail',
+            'profesion' => 'required',
+            'genero' => 'required',
+            'fecha_de_nacimiento' => 'required'
+        ];
+
+        $mensaje = [
+            'required' => 'El :attribute es requerido',
+            'telefono.required' => 'El número de teléfono es requerido',
+            'direccion.required' => 'La dirección es requerida',
+            'profesion.required' => 'La profesión es requerida',
+            'fecha_de_nacimiento.required' => 'La fecha de nacimiento es requerida',
+        ];
+        $this->validate($request, $rules, $mensaje);
+
         $alumnos= request()->except('_token');
         //return response()->json($alumnos);
         Alumno::insert($alumnos);
+        Flash::success('Creado correctamente');
         return redirect(route('alumnos.index'));
     }
 
@@ -54,9 +80,10 @@ class AlumnoController extends Controller
      * @param  \App\Models\Alumno  $alumno
      * @return \Illuminate\Http\Response
      */
-    public function show(Alumno $alumno)
+    public function show($id)
     {
-        //
+        $alumnos = Alumno::findorFail($id);
+        return view('alumnos.show', compact('alumnos'));
     }
 
     /**
@@ -82,6 +109,7 @@ class AlumnoController extends Controller
     {
         $alumnos=request()->except(['_token', '_method']);
         Alumno::where('id','=',$id)->update($alumnos);
+        Flash::success('Actualizado correctamente');
         return redirect('alumnos');
     }
 
@@ -94,6 +122,7 @@ class AlumnoController extends Controller
     public function destroy($id)
     {
         Alumno::destroy($id);
+        Flash::error('Eliminado correctamente');
         return redirect('alumnos');
     }
 }
