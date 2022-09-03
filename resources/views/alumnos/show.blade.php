@@ -8,10 +8,10 @@
     <input type="number" class="form-control" name="edad" id="edad" value="{{$alumnos->edad}}" disabled="true">
 
     <label for="ci">Ci</label>
-    <input type="number" class="form-control" name="ci" id="ci" value="{{$alumnos->ci}}" disabled="true">
+    <input type="text" class="form-control" name="ci" id="ci" value="{{$alumnos->ci}}" disabled="true">
 
     <label for="telefono">Telefono</label>
-    <input type="number" class="form-control" name="telefono" id="telefono" value="{{$alumnos->telefono}}" disabled="true">
+    <input type="text" class="form-control" name="telefono" id="telefono" value="{{$alumnos->telefono}}" disabled="true">
 
     <label for="direccion">Direccion</label>
     <input type="text" class="form-control" name="direccion" id="direccion" value="{{$alumnos->direccion}}" disabled="true">

@@ -26,10 +26,10 @@
         <input type="number" class="form-control" name="edad" id="edad">
 
         <label for="ci">Ci</label>
-        <input type="number" class="form-control" name="ci" id="ci">
+        <input type="text" class="form-control" name="ci" id="ci">
 
         <label for="telefono">Telefono</label>
-        <input type="number" class="form-control" name="telefono" id="telefono">
+        <input type="text" class="form-control" name="telefono" id="telefono">
 
         <label for="direccion">Direccion</label>
         <input type="text" class="form-control" name="direccion" id="direccion">

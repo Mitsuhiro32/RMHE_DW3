@@ -14,10 +14,10 @@
         <input type="number" class="form-control" name="edad" id="edad" value="{{$alumnos->edad}}">
 
         <label for="ci">Ci</label>
-        <input type="number" class="form-control" name="ci" id="ci" value="{{$alumnos->ci}}">
+        <input type="text" class="form-control" name="ci" id="ci" value="{{$alumnos->ci}}">
 
         <label for="telefono">Telefono</label>
-        <input type="number" class="form-control" name="telefono" id="telefono" value="{{$alumnos->telefono}}">
+        <input type="text" class="form-control" name="telefono" id="telefono" value="{{$alumnos->telefono}}">
 
         <label for="direccion">Direccion</label>
         <input type="text" class="form-control" name="direccion" id="direccion" value="{{$alumnos->direccion}}">
