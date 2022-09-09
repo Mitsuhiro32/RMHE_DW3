@@ -1,12 +1,13 @@
 @include('app')
 <div class="container">
+    <br>
     @include('flash::message')
     <h1>Lista de Alumnos</h1>
     <div class="d-flex justify-content-between">
         <div class="col-auto">
             <a class="d-flex justify-content-end" href="{{route('alumnos.create')}}">
-            <button type="button" class="btn btn-primary">Nuevo</button>
-        </a>
+                <button type="button" class="btn btn-primary">Nuevo</button>
+            </a>
         </div>
         <div class="card-body">
             <form class="row g-2 float-end">

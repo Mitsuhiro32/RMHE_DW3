@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\DB;
 use App\Models\Alumno;
 use Illuminate\Http\Request;
-use Flash;
+use Laracasts\Flash\Flash;
 
 use function PHPUnit\Framework\returnSelf;
 
@@ -45,17 +45,17 @@ class AlumnoController extends Controller
      */
     public function store(Request $request)
     {
-        $rules=[
-            'nombre' => 'required |string',
-            'apellido' => 'required |alpha',
-            'edad' => 'required |max:3',
-            'ci' => 'required |numeric',
-            'telefono' => 'required |max:13',
+        $rules = [
+            'nombre' => 'required|string',
+            'apellido' => 'required|alpha',
+            'edad' => 'required|max:3',
+            'ci' => 'required|numeric',
+            'telefono' => 'required|max:13',
             'direccion' => 'required',
-            'gmail' => 'required |email|unique:alumnos.gmail',
+            'gmail' => 'required|email|unique:alumnos.gmail',
             'profesion' => 'required',
             'genero' => 'required',
-            'fecha_de_nacimiento' => 'required'
+            'fecha_de_nacimiento' => 'required',
         ];
 
         $mensaje = [
@@ -67,7 +67,7 @@ class AlumnoController extends Controller
         ];
         $this->validate($request, $rules, $mensaje);
 
-        $alumnos= request()->except('_token');
+        $alumnos = request()->except('_token');
         //return response()->json($alumnos);
         Alumno::insert($alumnos);
         Flash::success('Creado correctamente');
