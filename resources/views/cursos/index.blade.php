@@ -4,10 +4,10 @@
 <div class="container">
     <br>
     @include('flash::message')
-    <h1>Lista de Alumnos</h1>
+    <h1>Lista de Cursos</h1>
     <div class="d-flex justify-content-between">
         <div class="col-auto">
-            <a class="d-flex justify-content-end" href="{{route('alumnos.create')}}">
+            <a class="d-flex justify-content-end" href="{{route('cursos.create')}}">
                 <button type="button" class="btn btn-primary">Nuevo</button>
             </a>
         </div>
@@ -28,42 +28,32 @@
             <thead>
                 <tr>
                     <th>Nombre</th>
-                    <th>Apellido</th>
-                    <th>Edad</th>
-                    <th>CI</th>
-                    <th>Teléfono</th>
-                    <th>Dirección</th>
-                    <th>Gmail</th>
-                    <th>Pofesión</th>
-                    <th>Genero</th>
-                    <th>Fecha de Nacimiento</th>
+                    <th>Descripción</th>
+                    <th>Fecha de Inicio</th>
+                    <th>Fecha de Finalización</th>
+                    <th>Estado</th>
                     <th>Opciones</th>
                 </tr>
             </thead>
 
             <tbody>
-                @foreach ($alumnos as $a)
+                @foreach ($cursos as $c)
                     <tr>
-                        <td>{{ $a->nombre }}</td>
-                        <td>{{ $a->apellido }}</td>
-                        <td>{{ $a->edad }}</td>
-                        <td>{{ $a->ci }}</td>
-                        <td>{{ $a->telefono }}</td>
-                        <td>{{ $a->direccion }}</td>
-                        <td>{{ $a->gmail }}</td>
-                        <td>{{ $a->profesion }}</td>
-                        <td>{{ $a->genero }}</td>
-                        <td>{{ $a->fecha_de_nacimiento }}</td>
+                        <td>{{ $c->nombre}}</td>
+                        <td>{{ $c->descripcion }}</td>
+                        <td>{{ $c->fecha_inicio }}</td>
+                        <td>{{ $c->fecha_fin }}</td>
+                        <td>{{ $c->estado }}</td>
                         <td>
                             <div class="btn-group">
                                 <div class="me-2">
-                                    <a href="{{url('/alumnos/'.$a->id.'/edit')}}">
+                                    <a href="{{--{{url('/cursos/'.$c->id.'/edit')}}--}}">
                                         <input type="submit" class="btn btn-warning" value="Editar">
                                     </a>
                                 </div>
 
                                 <div class="me-2">
-                                <form action="{{url('/alumnos/'.$a->id)}}" method="POST">
+                                <form action="{{--{{url('/cursos/'.$c->id)}}--}}" method="POST">
                                     @csrf
                                     {{method_field('DELETE')}}
                                     <input type="submit" class="btn btn-danger" onclick="return confirm('Estas seguro')" value="Borrar">
@@ -71,11 +61,10 @@
                                 </div>
 
                                 <div class="me-2">
-                                <a href="{{route('alumnos.show', $a->id)}}">
+                                <a href="{{--{{route('cusos.show', $c->id)}} --}}">
                                     <input type="submit" class="btn btn-info" value="Ver">
                                 </a>
                                 </div>
-
                             </div>
                         </td>
                     </tr>
@@ -83,7 +72,7 @@
             </tbody>
         </table>
         <div class="d-flex justify-content-end">
-            {{$alumnos -> links()}}
+            {{-- {{$cursos -> links()}} --}}
         </div>
     </div>
 </div>

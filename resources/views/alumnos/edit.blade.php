@@ -1,4 +1,6 @@
 @include('app')
+@include('menu')
+
 <div class="container">
     <h1>Editar Alumno</h1>
     <form action="{{url('/alumnos/'.$alumnos->id)}}" method="POST" enctype="multipart/form-data">

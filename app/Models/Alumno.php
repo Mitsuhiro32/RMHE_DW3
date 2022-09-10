@@ -10,6 +10,7 @@ class Alumno extends Model
     use HasFactory;
     public $table = 'alumnos';
     public $fillable =[
+        'curso_id',
         'nombre',
         'apellido',
         'edad',

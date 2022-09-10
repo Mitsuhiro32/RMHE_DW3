@@ -1,4 +1,5 @@
 @include('app')
+@include('menu')
 
 <div class="container">
     @if (count($errors)>0)

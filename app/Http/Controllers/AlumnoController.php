@@ -52,10 +52,11 @@ class AlumnoController extends Controller
             'ci' => 'required|numeric',
             'telefono' => 'required|max:13',
             'direccion' => 'required',
-            'gmail' => 'required|email|unique:alumnos.gmail',
+            'gmail' => 'required|unique:alumnos,gmail',
             'profesion' => 'required',
             'genero' => 'required',
             'fecha_de_nacimiento' => 'required',
+            'curso_id' => 'required',
         ];
 
         $mensaje = [
@@ -64,6 +65,7 @@ class AlumnoController extends Controller
             'direccion.required' => 'La dirección es requerida',
             'profesion.required' => 'La profesión es requerida',
             'fecha_de_nacimiento.required' => 'La fecha de nacimiento es requerida',
+            'curso_id.required' => 'El ID de curso es requerido',
         ];
         $this->validate($request, $rules, $mensaje);
 

@@ -1,4 +1,6 @@
 @include('app')
+@include('menu')
+
 <div class="container">
     <h1>Detalle del Alumno</h1>
     <label for="apellido">Apellido</label>
