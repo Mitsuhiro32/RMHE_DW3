@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\DB;
 use App\Models\Alumno;
+use App\Models\Curso;
 use Illuminate\Http\Request;
 use Laracasts\Flash\Flash;
 
@@ -34,7 +35,10 @@ class AlumnoController extends Controller
      */
     public function create()
     {
-        return view('alumnos.create');
+        $curso_list = Curso::all();
+        $lista = array("lista_cursos" => $curso_list);
+        //return view('alumnos.create');
+        return response()->view("alumnos.create", $lista);
     }
 
     /**
@@ -96,8 +100,10 @@ class AlumnoController extends Controller
      */
     public function edit($id)
     {
+        $curso_list = Curso::all();
+        $lista = array("lista_cursos" => $curso_list);
         $alumnos = Alumno::findorFail($id);
-        return view('alumnos.edit', compact('alumnos'));
+        return view('alumnos.edit', $lista, compact('alumnos'));
     }
 
     /**

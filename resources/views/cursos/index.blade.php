@@ -47,13 +47,13 @@
                         <td>
                             <div class="btn-group">
                                 <div class="me-2">
-                                    <a href="{{--{{url('/cursos/'.$c->id.'/edit')}}--}}">
+                                    <a href="{{url('/cursos/'.$c->id.'/edit')}}">
                                         <input type="submit" class="btn btn-warning" value="Editar">
                                     </a>
                                 </div>
 
                                 <div class="me-2">
-                                <form action="{{--{{url('/cursos/'.$c->id)}}--}}" method="POST">
+                                <form action="{{url('/cursos/'.$c->id)}}" method="POST">
                                     @csrf
                                     {{method_field('DELETE')}}
                                     <input type="submit" class="btn btn-danger" onclick="return confirm('Estas seguro')" value="Borrar">
@@ -61,7 +61,7 @@
                                 </div>
 
                                 <div class="me-2">
-                                <a href="{{--{{route('cusos.show', $c->id)}} --}}">
+                                <a href="{{route('cusos.show', $c->id)}}">
                                     <input type="submit" class="btn btn-info" value="Ver">
                                 </a>
                                 </div>
@@ -72,7 +72,7 @@
             </tbody>
         </table>
         <div class="d-flex justify-content-end">
-            {{-- {{$cursos -> links()}} --}}
+            {{$cursos -> links()}}
         </div>
     </div>
 </div>

@@ -7,14 +7,15 @@
     <h1>Lista de Alumnos</h1>
     <div class="d-flex justify-content-between">
         <div class="col-auto">
-            <a class="d-flex justify-content-end" href="{{route('alumnos.create')}}">
+            <a class="d-flex justify-content-end" href="{{ route('alumnos.create') }}">
                 <button type="button" class="btn btn-primary">Nuevo</button>
             </a>
         </div>
         <div class="card-body">
             <form class="row g-2 float-end">
                 <div class="col-auto">
-                    <input type="search" name="buscarpor" class="form-control" placeholder="Buscar por nombre" aria-label="search">
+                    <input type="search" name="buscarpor" class="form-control" placeholder="Buscar por nombre"
+                        aria-label="search">
                 </div>
                 <div class="col-auto">
                     <button class="btn btn-success mb-2" type="submit">Buscar</button>
@@ -37,6 +38,7 @@
                     <th>Pofesión</th>
                     <th>Genero</th>
                     <th>Fecha de Nacimiento</th>
+                    <th>Curso</th>
                     <th>Opciones</th>
                 </tr>
             </thead>
@@ -54,26 +56,28 @@
                         <td>{{ $a->profesion }}</td>
                         <td>{{ $a->genero }}</td>
                         <td>{{ $a->fecha_de_nacimiento }}</td>
+                        <td>{{ $a->curso->nombre }}</td>
                         <td>
                             <div class="btn-group">
                                 <div class="me-2">
-                                    <a href="{{url('/alumnos/'.$a->id.'/edit')}}">
+                                    <a href="{{ url('/alumnos/' . $a->id . '/edit') }}">
                                         <input type="submit" class="btn btn-warning" value="Editar">
                                     </a>
                                 </div>
 
                                 <div class="me-2">
-                                <form action="{{url('/alumnos/'.$a->id)}}" method="POST">
-                                    @csrf
-                                    {{method_field('DELETE')}}
-                                    <input type="submit" class="btn btn-danger" onclick="return confirm('Estas seguro')" value="Borrar">
-                                </form>
+                                    <form action="{{ url('/alumnos/' . $a->id) }}" method="POST">
+                                        @csrf
+                                        {{ method_field('DELETE') }}
+                                        <input type="submit" class="btn btn-danger"
+                                            onclick="return confirm('Estas seguro')" value="Borrar">
+                                    </form>
                                 </div>
 
                                 <div class="me-2">
-                                <a href="{{route('alumnos.show', $a->id)}}">
-                                    <input type="submit" class="btn btn-info" value="Ver">
-                                </a>
+                                    <a href="{{ route('alumnos.show', $a->id) }}">
+                                        <input type="submit" class="btn btn-info" value="Ver">
+                                    </a>
                                 </div>
 
                             </div>
@@ -83,7 +87,7 @@
             </tbody>
         </table>
         <div class="d-flex justify-content-end">
-            {{$alumnos -> links()}}
+            {{ $alumnos->links() }}
         </div>
     </div>
 </div>

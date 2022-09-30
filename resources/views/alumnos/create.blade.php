@@ -2,17 +2,17 @@
 @include('menu')
 
 <div class="container">
-    @if (count($errors)>0)
-    <br>
-    <div class="alert alert-danger" role="alert">
-        <u>
-            @foreach ($errors->all() as $error)
-                <li>
-                    {{ $error }}
-                </li>
-            @endforeach
-        </u>
-    </div>
+    @if (count($errors) > 0)
+        <br>
+        <div class="alert alert-danger" role="alert">
+            <u>
+                @foreach ($errors->all() as $error)
+                    <li>
+                        {{ $error }}
+                    </li>
+                @endforeach
+            </u>
+        </div>
     @endif
 
     <h1>Crear Alumno</h1>
@@ -52,6 +52,13 @@
 
         <label for="fecha_de_nacimiento">Fecha de Nacimiento</label>
         <input type="date" class="form-control" name="fecha_de_nacimiento" id="fecha_de_nacimiento">
+
+        <label for="curso_id">Cursos</label>
+        <select class="form-select" aria-label="Default select example" name="curso_id">
+            @foreach ($lista_cursos as $item)
+                <option value="{{ $item->id }}">{{ $item->nombre }}</option>
+            @endforeach
+        </select>
         <br>
 
         <div class="d-flex justify-content-between">

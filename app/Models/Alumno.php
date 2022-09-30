@@ -9,7 +9,7 @@ class Alumno extends Model
 {
     use HasFactory;
     public $table = 'alumnos';
-    public $fillable =[
+    public $fillable = [
         'curso_id',
         'nombre',
         'apellido',
@@ -22,4 +22,9 @@ class Alumno extends Model
         'genero',
         'fecha_de_nacimiento'
     ];
+
+    public function curso()
+    {
+        return $this->hasOne(Curso::class, 'id', 'curso_id');
+    }
 }
