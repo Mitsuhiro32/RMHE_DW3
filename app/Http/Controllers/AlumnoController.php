@@ -20,12 +20,12 @@ class AlumnoController extends Controller
     public function index(Request $request)
     {
         $nombre = $request->get('buscarpor');
-        $alumnos = Alumno::where('nombre','like',"%nombre%");
+        $alumnos = Alumno::where('nombre', 'like', "%nombre%");
         $alumnos = Alumno::paginate(3);
         //$alumnos = DB::table('alumnos')->get();
         //$alumnos = Alumno::all();
         //return json_decode($alumnos);
-        return view('alumnos.index',compact('alumnos'));
+        return view('alumnos.index', compact('alumnos'));
     }
 
     /**
@@ -35,10 +35,11 @@ class AlumnoController extends Controller
      */
     public function create()
     {
-        $curso_list = Curso::all();
-        $lista = array("lista_cursos" => $curso_list);
+        /*$curso_list = Curso::all();
+        $lista = array("lista_cursos" => $curso_list);*/
         //return view('alumnos.create');
-        return response()->view("alumnos.create", $lista);
+        $cursos = Curso::pluck('nombre', 'id');
+        return view('alumnos.create', compact('cursos'));
     }
 
     /**
@@ -89,7 +90,8 @@ class AlumnoController extends Controller
     public function show($id)
     {
         $alumnos = Alumno::findorFail($id);
-        return view('alumnos.show', compact('alumnos'));
+        $cursos = Curso::pluck('nombre', 'id');
+        return view('alumnos.show', compact('alumnos', 'cursos'));
     }
 
     /**
@@ -100,10 +102,11 @@ class AlumnoController extends Controller
      */
     public function edit($id)
     {
-        $curso_list = Curso::all();
-        $lista = array("lista_cursos" => $curso_list);
+        /* $curso_list = Curso::all();
+        $lista = array("lista_cursos" => $curso_list); */
+        $cursos = Curso::pluck('nombre', 'id');
         $alumnos = Alumno::findorFail($id);
-        return view('alumnos.edit', $lista, compact('alumnos'));
+        return view('alumnos.edit', compact('alumnos', 'cursos'));
     }
 
     /**
@@ -115,8 +118,8 @@ class AlumnoController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $alumnos=request()->except(['_token', '_method']);
-        Alumno::where('id','=',$id)->update($alumnos);
+        $alumnos = request()->except(['_token', '_method']);
+        Alumno::where('id', '=', $id)->update($alumnos);
         Flash::success('Actualizado correctamente');
         return redirect('alumnos');
     }

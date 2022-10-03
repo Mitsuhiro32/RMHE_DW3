@@ -23,8 +23,9 @@ class Alumno extends Model
         'fecha_de_nacimiento'
     ];
 
-    public function curso()
+    public function cursos()
     {
-        return $this->hasOne(Curso::class, 'id', 'curso_id');
+        return $this->belongsTo('App\Models\Curso', 'curso_id');
+        //return $this->hasOne(Curso::class, 'id', 'curso_id');
     }
 }

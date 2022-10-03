@@ -56,7 +56,7 @@
                         <td>{{ $a->profesion }}</td>
                         <td>{{ $a->genero }}</td>
                         <td>{{ $a->fecha_de_nacimiento }}</td>
-                        <td>{{ $a->curso->nombre }}</td>
+                        <td>{{ $a->cursos->nombre }}</td>
                         <td>
                             <div class="btn-group">
                                 <div class="me-2">
