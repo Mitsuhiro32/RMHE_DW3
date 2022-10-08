@@ -4,6 +4,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\AlumnoController;
 use App\Http\Controllers\CursoController;
+use Illuminate\Support\Facades\Auth;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -21,5 +23,8 @@ Route::get('/', function () {
 
 //Route::get('inicio', [HomeController::class, 'home']);
 //Route::get('inicio', 'AlumnoController@index');
-Route::resource('alumnos', AlumnoController::class);
-Route::resource('cursos', CursoController::class);
+Auth::routes();
+Route::resource('alumnos', AlumnoController::class)->middleware('auth');
+Route::resource('cursos', CursoController::class)->middleware('auth');
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

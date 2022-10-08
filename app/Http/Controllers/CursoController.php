@@ -16,6 +16,30 @@ class CursoController extends Controller
      */
     public function index(Request $request)
     {
+        /*
+        *consulta a la base de datos ORM
+        $r= Curso::where('estado','en proceso')->get();
+        return $r;
+        *traer todos los registros de la tabla ORM
+        $r= Curso::select("*")->get();
+        return $r;
+        *consulta a la base de datos
+        $c= DB::table('cursos')
+        ->where('estado','!=','Finalizado')
+        ->get();
+        return $c;
+        *contar registros
+        $c= DB::table('cursos')
+        ->where('estado','Finalizado')
+        ->get();
+        ->count();
+        return $c;
+        *Ordenar registros
+        $c= Curso::select("*")
+        ->orderBy('id','asc')
+        ->get();
+        */
+
         $nombre = $request->get('buscarpor');
         $cursos = Curso::where('nombre', 'like', "%nombre%");
         $cursos = Curso::paginate(3);

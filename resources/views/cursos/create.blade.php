@@ -39,7 +39,7 @@
         <select class="form-select" aria-label="Default select example" name="estado" id="estado">
             <option selected>Selecione</option>
             <option value="Proximamente">Proximamente</option>
-            <option value="En proceso">En proceso</option>
+            <option value="En Curso">En Curso</option>
             <option value="Finalizado">Finalizado</option>
         </select>
         <br>

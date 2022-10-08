@@ -50,11 +50,11 @@
                                     <span class="badge text-bg-primary">{{ $c->estado }}</span>
                                     @break
 
-                                @case($c->estado == 'En proceso')
+                                @case($c->estado == 'En Curso')
                                     <span class="badge text-bg-success">{{ $c->estado }}</span>
                                     @break
 
-                                @case($c->estado == 'Terminado')
+                                @case($c->estado == 'Finalizado')
                                     <span class="badge text-bg-danger">{{ $c->estado }}</span>
                                     @break
                             @endswitch

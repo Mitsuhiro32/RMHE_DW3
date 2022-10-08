@@ -27,7 +27,7 @@
 		<select class="form-select" aria-label="Default select example" name="estado" id="estado">
             <option selected>Selecione</option>
             <option value="Proximamente" {{ $cursos->estado == 'Proximamente' ? 'selected' : '' }}>Proximamente</option>
-            <option value="En proceso" {{ $cursos->estado == 'En proceso' ? 'selected' : '' }}>En proceso</option>
+            <option value="En Curso" {{ $cursos->estado == 'En Curso' ? 'selected' : '' }}>En Curso</option>
             <option value="Finalizado" {{ $cursos->estado == 'Finalizado' ? 'selected' : '' }}>Finalizado</option>
         </select>
         <br>
